@@ -44,3 +44,16 @@
 
 
 **<p align="center">&#9786; Happy Coding &#9997;</p>**
+
+----------------------------------------------------------------
+BASE_URL:"https://661248a395fdb62f24ee586e.mockapi.io/products"
+GET
+/products
+GET
+/products/:id
+POST
+/products
+PUT
+/products/:id
+DELETE
+/products/:id

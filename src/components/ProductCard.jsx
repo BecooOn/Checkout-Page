@@ -27,7 +27,7 @@ const ProductCard = ({
   //!-----------Butonun fonksiyonuna göre miktar ayarlama ve hesaplama durumu---------------
   const handleAmount = (id, action) => {
     const badge = document.querySelector(`#amount${id}`);
-    if (action === "plus" && badge.textContent < product.amount) {
+    if (action === "plus" && badge.textContent <= product.amount) {
       badge.textContent++;
       handleUpdate(id, product.amount - Number(badge.textContent));
     } else if (action === "minus") {
@@ -49,12 +49,12 @@ const ProductCard = ({
   //!--------------Toplam fiyatı hesaplama-------------
   const calculateTotalPrice = () => {
     const prices = document.querySelectorAll("#product-price");
-    console.log(prices);
+    // console.log(prices);
     const sum = [...prices].reduce(
       (acc, cur) => acc + Number(cur.textContent),
       0
     );
-    console.log(sum);
+    // console.log(sum);
     const shipping =
       sum >= FREE_SHIPPING_LIMIT || sum === 0 ? 0.0 : SHIPPING_PRICE;
     const tax = sum * TAX_RATE;
@@ -76,14 +76,14 @@ const ProductCard = ({
     }
   };
 
-  //!---------------ürün silme ve api'ye delete isteği yapma---------------
+  //!---------------ürün silme ve api'ye delete isteği---------------
   const handleRemove = async (id) => {
     try {
       await axios.delete(
         `https://661248a395fdb62f24ee586e.mockapi.io/products/${id}`
       );
       getProducts();
-      //?-----------ürün listeden silme için if bloğu ve navbardaki sepette miktarı güncelleme-------
+      //?-----------ürün listeden silme için if bloğu ve navbar sepette miktarı güncelleme-------
       if (arr.includes(id)) {
         const index = arr.indexOf(id);
         arr.splice(index, 1);
@@ -96,7 +96,7 @@ const ProductCard = ({
     }
   };
 
-  //!------------Listeye ürün ekleme ve navbardaki sepette miktarı güncelleme------------
+  //!------------Listeye ürün ekleme ve navbar sepette miktarı güncelleme------------
   const handleCartCount = (id) => {
     if (!arr.includes(id)) {
       arr.push(id);
@@ -114,17 +114,23 @@ const ProductCard = ({
 
   return (
     <Container className="d-flex mt-2">
-      <Card style={{ width: "18rem" }}>
-        <Card.Img variant="top" src={product.image} alt={product.image} />
+      <Card style={{ width: "18rem"}}>
+        <Card.Img
+          variant="top"
+          src={product.image}
+          alt={product.image}
+          style={{ objectFit:"contain"}}
+          height={"200px"}
+        />
         <Card.Body className="text-center">
           <Card.Title>{product.name}</Card.Title>
-          <Card.Text className="d-flex justify-content-evenly">
-            {(
+          <Card.Text className="d-flex justify-content-evenly fw-bolder fs-5">
+           <span className="border border-2 rounded-2 p-1 text-bg-warning">{(
               product.price -
               product.price * (product.dampingRate / 100)
             ).toFixed(2)}
-            ${" "}
-            <span className="text-decoration-line-through">
+            ${" "}</span> 
+            <span className="text-decoration-line-through border border-2 rounded-2 p-1 text-bg-secondary">
               {product.price}$
             </span>
           </Card.Text>
@@ -154,13 +160,13 @@ const ProductCard = ({
             </Button>
             <Button
               variant="primary"
-              onClick={(e) => handleCartCount(product.id)}
+              onClick={() => handleCartCount(product.id)}
             >
               Add to Cart
             </Button>
           </Card.Text>
           <Card.Text>
-            price: <span id="product-price">{price}</span>$
+            <span className="fw-bold ">Total:</span> <span id="product-price">{price}</span>$
           </Card.Text>
         </Card.Body>
       </Card>

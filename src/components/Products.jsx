@@ -5,9 +5,8 @@ import FormPage from "./FormPage";
 import ProductCard from "./ProductCard";
 import TotalPrice from "./TotalPrice";
 
-const Products = ({ setCountProduct }) => {
+const Products = ({ setCountProduct,toggle, setToggle }) => {
   const [productList, setProductList] = useState([]);
-  const [toggle, setToggle] = useState(false);
   const [totalPrice, setTotalPrice] = useState({
     subtotal: 0,
     tax: 0,
