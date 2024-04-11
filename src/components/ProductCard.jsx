@@ -49,12 +49,12 @@ const ProductCard = ({
   //!--------------Toplam fiyatı hesaplama-------------
   const calculateTotalPrice = () => {
     const prices = document.querySelectorAll("#product-price");
-    // console.log(prices);
+    console.log(prices);
     const sum = [...prices].reduce(
       (acc, cur) => acc + Number(cur.textContent),
       0
     );
-    // console.log(sum);
+    console.log(sum);
     const shipping =
       sum >= FREE_SHIPPING_LIMIT || sum === 0 ? 0.0 : SHIPPING_PRICE;
     const tax = sum * TAX_RATE;
@@ -114,24 +114,26 @@ const ProductCard = ({
 
   return (
     <Container className="d-flex mt-2">
-      <Card style={{ width: "18rem"}}>
+      <Card style={{ width: "18rem" }}>
         <Card.Img
           variant="top"
           src={product.image}
           alt={product.image}
-          style={{ objectFit:"contain"}}
+          style={{ objectFit: "contain" }}
           height={"200px"}
         />
         <Card.Body className="text-center">
           <Card.Title>{product.name}</Card.Title>
           <Card.Text className="d-flex justify-content-evenly fw-bolder fs-5">
-           <span className="border border-2 rounded-2 p-1 text-bg-warning">{(
-              product.price -
-              product.price * (product.dampingRate / 100)
-            ).toFixed(2)}
-            ${" "}</span> 
+            <span className="border border-2 rounded-2 p-1 text-bg-warning">
+              $
+              {(
+                product.price -
+                product.price * (product.dampingRate / 100)
+              ).toFixed(2)}{" "}
+            </span>
             <span className="text-decoration-line-through border border-2 rounded-2 p-1 text-bg-secondary">
-              {product.price}$
+              ${product.price}
             </span>
           </Card.Text>
           <Card.Text>
@@ -166,7 +168,11 @@ const ProductCard = ({
             </Button>
           </Card.Text>
           <Card.Text>
-            <span className="fw-bold ">Total:</span> <span id="product-price">{price}</span>$
+            <span className="fw-bold fs-5">Total:</span>{" "}
+            <span className="fs-5">$</span>
+            <span id="product-price" className="fs-5">
+              {price}
+            </span>
           </Card.Text>
         </Card.Body>
       </Card>
