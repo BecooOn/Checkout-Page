@@ -49,12 +49,12 @@ const ProductCard = ({
   //!--------------Toplam fiyatı hesaplama-------------
   const calculateTotalPrice = () => {
     const prices = document.querySelectorAll("#product-price");
-    console.log(prices);
+    // console.log(prices);
     const sum = [...prices].reduce(
       (acc, cur) => acc + Number(cur.textContent),
       0
     );
-    console.log(sum);
+    // console.log(sum);
     const shipping =
       sum >= FREE_SHIPPING_LIMIT || sum === 0 ? 0.0 : SHIPPING_PRICE;
     const tax = sum * TAX_RATE;
