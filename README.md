@@ -5,7 +5,6 @@ Bu proje, React kullanarak geliştirilen bir alışveriş sepeti ve ödeme sayfa
 Projeyi yerel ortamınıza klonlayarak başlayabilirsiniz.
 
 git clone https://github.com/BecooOn/react/assignments/SS5-Checkout-Page.git
-cd SS5-Checkout-Page
 
 ## Proje klasörüne gidin ve bağımlılıkları yükleyin:
 yarn install
