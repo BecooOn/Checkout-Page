@@ -9,7 +9,7 @@ import iziToast from "izitoast";
 const arr = []; //!ürünleri sepette tutacak array
 const FREE_SHIPPING_LIMIT = 2000;
 const SHIPPING_PRICE = 25;
-const TAX_RATE = 0.18;
+const TAX_RATE = 0.2;
 const ProductCard = ({
   product,
   getProducts,
