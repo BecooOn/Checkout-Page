@@ -18,14 +18,15 @@ const ProductCard = ({
 }) => {
   //!-------------indirimli fiyat değişkeni------------------
   let discountedPrice = Number(
-    product.price - product.price * (product.dampingRate / 100)
-  ).toFixed(2);
+    (product.price - product.price * (product.dampingRate / 100)).toFixed(2)
+  );
 
   //!--------------ürün fiyatının ilk görünümü için veri saklama ve güncelleme-------------
   const [price, setPrice] = useState(discountedPrice);
 
   //!-----------Butonun fonksiyonuna göre miktar ayarlama ve hesaplama durumu---------------
   const handleAmount = (id, action) => {
+    console.log(action);
     const badge = document.querySelector(`#amount${id}`);
     if (action === "plus" && badge.textContent <= product.amount) {
       badge.textContent++;

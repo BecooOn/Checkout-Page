@@ -1,4 +1,4 @@
-import React, { useState, useEffect, Fragment } from "react";
+import React, { useState, useEffect } from "react";
 import Container from "react-bootstrap/Container";
 import Button from "react-bootstrap/Button";
 import FormPage from "./FormPage";
@@ -35,7 +35,7 @@ const Products = ({ setCountProduct,toggle, setToggle }) => {
       <Container className="text-center">
         <Button
           variant={toggle ? "danger" : "success"}
-          className="mt-4"
+          className="mt-5 mb-3"
           onClick={handleProductList}
         >
           {toggle ? "Hide Form" : "Show Form"}

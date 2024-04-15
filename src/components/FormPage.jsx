@@ -86,7 +86,7 @@ function FormPage({ getProducts }) {
         />
       </Form.Group>
       <Container className="text-center">
-        <Button variant="success" type="submit" onSubmit={handleSubmit}>
+        <Button variant="success" type="submit" onSubmit={handleSubmit} className="mt-3 mb-3">
           Add to List
         </Button>
       </Container>

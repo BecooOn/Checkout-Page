@@ -5,7 +5,7 @@ import Table from 'react-bootstrap/Table';
 const TotalPrice = ({ totalPrice }) => {
   console.log(totalPrice);
   return (
-    <Container className="mt-2 mb-5" style={{width:"320px"}}>
+    <Container className="mt-3 mb-3" style={{width:"320px"}}>
       <Table striped bordered hover>
       <tbody>
         <tr>
